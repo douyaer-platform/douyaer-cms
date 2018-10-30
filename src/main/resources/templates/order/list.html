@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="config::index" th:with="title='后台管理'">
+</head>
+
+<body class="layui-layout-body">
+  <div class="layui-layout layui-layout-admin">
+    <!-- 头部 -->
+    <div th:replace="fragment/header::header"></div>
+    <!-- 菜单 -->
+    <div th:replace="fragment/menu::menu"></div>
+
+    <div class="layui-body" style="margin: 1%">
+      <form class="layui-form" action="">
+        <div class="layui-form-item">
+          <label class="layui-form-label">
+            刷手手机：
+          </label>
+          <div class="layui-inline">
+            <input class="layui-input" name="phone" id="phone" autocomplete="off">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">
+            商家手机：
+          </label>
+          <div class="layui-inline">
+            <input class="layui-input" name="busPhone" id="busPhone" autocomplete="off">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">
+            订单编号：
+          </label>
+          <div class="layui-inline">
+            <input class="layui-input" name="orderId" id="orderId" autocomplete="off">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">
+            订单状态：
+          </label>
+          <div class="layui-inline">
+            <select name="status" id="status">
+              <option value="">--</option>
+              <option value="0">待完成</option>
+              <option value="1">待商家发布评价</option>
+              <option value="2">待刷手评价</option>
+              <option value="3">待放款</option>
+              <option value="4">已结束</option>
+              <option value="-1">已取消</option>
+            </select>
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">
+            时间：
+          </label>
+          <div class="layui-inline">
+            <input class="layui-input" name="start" id="start" autocomplete="off">
+          </div>
+          <div class="layui-inline">
+            <p>~</p>
+          </div>
+          <div class="layui-inline">
+            <input class="layui-input" name="end" id="end" autocomplete="off">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="search">搜索</button>
+          </div>
+        </div>
+      </form>
+
+      <table class="layui-hide" id="list" lay-filter="list"></table>
+      <script type="text/html" id="operate">
+        <a class="layui-btn layui-btn-xs" lay-event="detail">查看详情</a>
+        {{#  if(d.status != 4 && d.status != -1) { }}
+          <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="cancel">取消</a>
+        {{# } else { }}
+          <a class="layui-btn layui-btn-xs layui-btn-danger layui-disabled">取消</a>
+        {{# } }}
+      </script>
+
+      <!-- 详情弹出层 -->
+      <div class="layui-container" id="detail" style="display: none;">
+        <div class="layui-row">
+          <div class="layui-col-md2">
+            <p align="right">店铺名称：</p>
+          </div>
+          <div class="layui-col-md10">
+            <p id="storeName"></p>
+          </div>
+        </div>
+        <div class="layui-row">
+          <div class="layui-col-md2">
+            <p align="right">商品链接：</p>
+          </div>
+          <div class="layui-col-md10">
+            <p id="goodsUrl"></p>
+          </div>
+        </div>
+        <div class="layui-row">
+          <div class="layui-col-md2">
+            <p align="right">商品截图：</p>
+          </div>
+          <div class="layui-col-md10">
+            <p id="goodsPicUrl"></p>
+          </div>
+        </div>
+        <div class="layui-row">
+          <div class="layui-col-md2">
+            <p align="right">搜索截图：</p>
+          </div>
+          <div class="layui-col-md10">
+            <p id="taskSearchPicUrl"></p>
+          </div>
+        </div>
+        <div class="layui-row">
+          <div class="layui-col-md2">
+            <p align="right">条件截图：</p>
+          </div>
+          <div class="layui-col-md10">
+            <p id="conditionPicUrl"></p>
+          </div>
+        </div>
+        <div class="layui-row">
+          <div class="layui-col-md2">
+            <p align="right">商品价格：</p>
+          </div>
+          <div class="layui-col-md10">
+            <p id="goodsPrice"></p>
+          </div>
+        </div>
+        <div class="layui-row">
+          <div class="layui-col-md2">
+            <p align="right">搜索关键词：</p>
+          </div>
+          <div class="layui-col-md10">
+            <p id="tags"></p>
+          </div>
+        </div>
+        <div class="layui-row">
+          <div class="layui-col-md2">
+            <p align="right">回购类型：</p>
+          </div>
+          <div class="layui-col-md10">
+            <p id="buyBackType"></p>
+          </div>
+        </div>
+        <div class="layui-row">
+          <div class="layui-col-md2">
+            <p align="right">是否需要咨询：</p>
+          </div>
+          <div class="layui-col-md10">
+            <p id="needAlitm"></p>
+          </div>
+        </div>
+        <div class="layui-row">
+          <div class="layui-col-md2">
+            <p align="right">刷手手机：</p>
+          </div>
+          <div class="layui-col-md10">
+            <p id="phoneDetail"></p>
+          </div>
+        </div>
+        <div class="layui-row">
+          <div class="layui-col-md2">
+            <p align="right">刷手淘宝：</p>
+          </div>
+          <div class="layui-col-md10">
+            <p id="taobaoAccount"></p>
+          </div>
+        </div>
+        <div class="layui-row">
+          <div class="layui-col-md2">
+            <p align="right">商家手机：</p>
+          </div>
+          <div class="layui-col-md10">
+            <p id="busPhoneDetail"></p>
+          </div>
+        </div>
+        <div class="layui-row">
+          <div class="layui-col-md2">
+            <p align="right">商家淘宝：</p>
+          </div>
+          <div class="layui-col-md10">
+            <p id="busTaobaoAccount"></p>
+          </div>
+        </div>
+        <div class="layui-row">
+          <div class="layui-col-md2">
+            <p align="right">订单状态：</p>
+          </div>
+          <div class="layui-col-md10">
+            <table class="layui-table">
+              <colgroup>
+                <col width="200">
+                <col width="200">
+                <col width="200">
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>订单操作</th>
+                  <th>提交参数</th>
+                  <th>完成时间</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>接单</td>
+                  <td>-</td>
+                  <td>
+                    <p id="createTime"></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>未完成->已完成</td>
+                  <td>
+                    <table class="layui-table">
+                      <colgroup>
+                        <col width="100">
+                        <col width="100">
+                      </colgroup>
+                      <tbody>
+                        <tr>
+                          <td><p id="ipScreenshotUrl"></p></td>
+                          <td><img class="layui-upload-img" id="img_ipScreenshotUrl"></td>
+                        </tr>
+                        <tr>
+                          <td><p id="searchPicUrl"></p></td>
+                          <td><img class="layui-upload-img" id="img_searchPicUrl"></td>
+                        </tr>
+                        <tr>
+                          <td><p id="comparePicUrl1"></p></td>
+                          <td><img class="layui-upload-img" id="img_comparePicUrl1"></td>
+                        </tr>
+                        <tr>
+                          <td><p id="comparePicUrl2"></p></td>
+                          <td><img class="layui-upload-img" id="img_comparePicUrl2"></td>
+                        </tr>
+                        <tr>
+                          <td><p id="comparePicUrl3"></p></td>
+                          <td><img class="layui-upload-img" id="img_comparePicUrl3"></td>
+                        </tr>
+                        <tr>
+                          <td><p id="enterStoreUrl"></p></td>
+                          <td><img class="layui-upload-img" id="img_enterStoreUrl"></td>
+                        </tr>
+                        <tr>
+                          <td><p id="favoriteAttentionEntershopUrl"></p></td>
+                          <td><img class="layui-upload-img" id="img_favoriteAttentionEntershopUrl"></td>
+                        </tr>
+                        <tr>
+                          <td><p id="favoriteAttentionUrl"></p></td>
+                          <td><img class="layui-upload-img" id="img_favoriteAttentionUrl"></td>
+                        </tr>
+                        <tr>
+                          <td><p id="viewRemarkUrl"></p></td>
+                          <td><img class="layui-upload-img" id="img_viewRemarkUrl"></td>
+                        </tr>
+                        <tr>
+                          <td><p id="viewBuyershowUrl"></p></td>
+                          <td><img class="layui-upload-img" id="img_viewBuyershowUrl"></td>
+                        </tr>
+                        <tr>
+                          <td><p id="detailPageUrl"></p></td>
+                          <td><img class="layui-upload-img" id="img_detailPageUrl"></td>
+                        </tr>
+                        <tr>
+                          <td><p id="detailPageBottomUrl"></p></td>
+                          <td><img class="layui-upload-img" id="img_detailPageBottomUrl"></td>
+                        </tr>
+                        <tr>
+                          <td><p id="homePageUrl"></p></td>
+                          <td><img class="layui-upload-img" id="img_homePageUrl"></td>
+                        </tr>
+                        <tr>
+                          <td><p id="viewAllGoodsUrl"></p></td>
+                          <td><img class="layui-upload-img" id="img_viewAllGoodsUrl"></td>
+                        </tr>
+                        <tr>
+                          <td><p id="viewOtherGoodsUrl"></p></td>
+                          <td><img class="layui-upload-img" id="img_viewOtherGoodsUrl"></td>
+                        </tr>
+                        <tr>
+                          <td><p id="chatUrl"></p></td>
+                          <td><img class="layui-upload-img" id="img_chatUrl"></td>
+                        </tr>
+                        <tr>
+                          <td><p id="buyGoodsUrl"></p></td>
+                          <td><img class="layui-upload-img" id="img_buyGoodsUrl"></td>
+                        </tr>
+                        <tr>
+                          <td><p id="finishOrderUrl"></p></td>
+                          <td><img class="layui-upload-img" id="img_finishOrderUrl"></td>
+                        </tr>
+                        <tr>
+                          <td><p id="backBuyImg1"></p></td>
+                          <td><img class="layui-upload-img" id="img_backBuyImg1"></td>
+                        </tr>
+                        <tr>
+                          <td><p id="backBuyImg2"></p></td>
+                          <td><img class="layui-upload-img" id="img_backBuyImg2"></td>
+                        </tr>
+                        <tr>
+                          <td><p id="backBuyImg3"></p></td>
+                          <td><img class="layui-upload-img" id="img_backBuyImg3"></td>
+                        </tr>
+                        <tr>
+                          <td><p id="backBuyImg4"></p></td>
+                          <td><img class="layui-upload-img" id="img_backBuyImg4"></td>
+                        </tr>
+                        <tr>
+                          <td><p id="backBuyImg5"></p></td>
+                          <td><img class="layui-upload-img" id="img_backBuyImg5"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                  <td>
+                    <p id="submitOrderTime"></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>已完成->待评价</td>
+                  <td>
+                    <p id="businessRemarkDes"></p>
+                    <table class="layui-table">
+                      <colgroup>
+                        <col width="100">
+                        <col width="100">
+                      </colgroup>
+                      <tbody>
+                        <tr>
+                          <td><p id="buyershowUrl1"></p></td>
+                          <td><img class="layui-upload-img" id="img_buyershowUrl1"></td>
+                        </tr>
+                        <tr>
+                          <td><p id="buyershowUrl2"></p></td>
+                          <td><img class="layui-upload-img" id="img_buyershowUrl2"></td>
+                        </tr>
+                        <tr>
+                          <td><p id="buyershowUrl3"></p></td>
+                          <td><img class="layui-upload-img" id="img_buyershowUrl3"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                  <td>
+                    <p id="businessRemarkTime"></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>待评价->已评价</td>
+                  <td>
+                    <table class="layui-table">
+                      <colgroup>
+                        <col width="100">
+                        <col width="100">
+                      </colgroup>
+                      <tbody>
+                        <tr>
+                          <td><p id="finishRemarkUrl"></p></td>
+                          <td><img class="layui-upload-img" id="img_finishRemarkUrl"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                  <td>
+                    <p id="brushhandRemarkTime"></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>已评价->已放款</td>
+                  <td>-</td>
+                  <td>
+                    <p id="sendMoneyTime"></p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--底部-->
+    <div th:replace="fragment/footer::footer"></div>
+  </div>
+  <script src="/js/order/list.js"></script>
+</body>
+
+</html>

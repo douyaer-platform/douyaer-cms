@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.douyaer.cms.dao.DepositWithdrawMapper" >
+  <resultMap id="BaseResultMap" type="com.douyaer.cms.pojo.DepositWithdraw" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Long" />
+      <arg column="user_id" jdbcType="INTEGER" javaType="java.lang.Long" />
+      <arg column="exchange_type" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="total_fee" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="wechat_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="remark" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ctime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <resultMap id="DepositEntity" type="com.douyaer.cms.entity.DepositEntity" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Long" />
+      <arg column="user_id" jdbcType="INTEGER" javaType="java.lang.Long" />
+      <arg column="exchange_type" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="total_fee" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="wechat_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="remark" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ctime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="real_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="phone" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <resultMap id="WithdrawEntity" type="com.douyaer.cms.entity.WithdrawEntity" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Long" />
+      <arg column="user_id" jdbcType="INTEGER" javaType="java.lang.Long" />
+      <arg column="exchange_type" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="total_fee" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="wechat_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="remark" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ctime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="real_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="phone" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, exchange_type, total_fee, wechat_name, remark, ctime, status
+  </sql>
+  <insert id="insertSelective" keyProperty="id" useGeneratedKeys="true" parameterType="com.douyaer.cms.pojo.DepositWithdraw" >
+    insert into t_user_deposit_withdraw_apply
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="exchangeType != null" >
+        exchange_type,
+      </if>
+      <if test="totalFee != null" >
+        total_fee,
+      </if>
+      <if test="wechatName != null" >
+        wechat_name,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="ctime != null" >
+        ctime,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="exchangeType != null" >
+        #{exchangeType,jdbcType=VARCHAR},
+      </if>
+      <if test="totalFee != null" >
+        #{totalFee,jdbcType=DECIMAL},
+      </if>
+      <if test="wechatName != null" >
+        #{wechatName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="ctime != null" >
+        #{ctime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.douyaer.cms.pojo.DepositWithdraw" >
+    update t_user_deposit_withdraw_apply
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="exchangeType != null" >
+        exchange_type = #{exchangeType,jdbcType=VARCHAR},
+      </if>
+      <if test="totalFee != null" >
+        total_fee = #{totalFee,jdbcType=DECIMAL},
+      </if>
+      <if test="wechatName != null" >
+        wechat_name = #{wechatName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="ctime != null" >
+        ctime = #{ctime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

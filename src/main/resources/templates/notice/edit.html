@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="config::index" th:with="title='后台管理'">
+</head>
+
+<body class="layui-layout-body">
+  <div class="layui-layout layui-layout-admin">
+    <!-- 头部 -->
+    <div th:replace="fragment/header::header"></div>
+    <!-- 菜单 -->
+    <div th:replace="fragment/menu::menu"></div>
+
+    <div class="layui-body" style="margin: 1%">
+      <form class="layui-form" action="">
+        <div class="layui-form-item">
+          <label class="layui-form-label">消息内容</label>
+          <div class="layui-input-block">
+            <textarea id="content" name="content" required lay-verify="required" placeholder="请输入内容" class="layui-textarea"></textarea>
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="edit">保存</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <!--底部-->
+    <div th:replace="fragment/footer::footer"></div>
+  </div>
+  <script src="/js/notice/edit.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.douyaer.cms.dao.CoinMapper" >
+  <resultMap id="BaseResultMap" type="com.douyaer.cms.pojo.Coin" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Long" />
+      <arg column="user_id" jdbcType="INTEGER" javaType="java.lang.Long" />
+      <arg column="event" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="event_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="comment" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="count" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="account_balance" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="ctime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <resultMap id="CoinEntity" type="com.douyaer.cms.entity.CoinEntity" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Long" />
+      <arg column="user_id" jdbcType="INTEGER" javaType="java.lang.Long" />
+      <arg column="event" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="event_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="comment" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="count" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="account_balance" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="ctime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="phone" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, event, event_id, comment, count, account_balance, ctime
+  </sql>
+  <insert id="insertSelective" parameterType="com.douyaer.cms.pojo.Coin" >
+    insert into t_user_coin_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="event != null" >
+        event,
+      </if>
+      <if test="eventId != null" >
+        event_id,
+      </if>
+      <if test="comment != null" >
+        comment,
+      </if>
+      <if test="count != null" >
+        count,
+      </if>
+      <if test="accountBalance != null" >
+        account_balance,
+      </if>
+      <if test="ctime != null" >
+        ctime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="event != null" >
+        #{event,jdbcType=VARCHAR},
+      </if>
+      <if test="eventId != null" >
+        #{eventId,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null" >
+        #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="count != null" >
+        #{count,jdbcType=DECIMAL},
+      </if>
+      <if test="accountBalance != null" >
+        #{accountBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="ctime != null" >
+        #{ctime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.douyaer.cms.pojo.Coin" >
+    update t_user_coin_log
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="event != null" >
+        event = #{event,jdbcType=VARCHAR},
+      </if>
+      <if test="eventId != null" >
+        event_id = #{eventId,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null" >
+        comment = #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="count != null" >
+        count = #{count,jdbcType=DECIMAL},
+      </if>
+      <if test="accountBalance != null" >
+        account_balance = #{accountBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="ctime != null" >
+        ctime = #{ctime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

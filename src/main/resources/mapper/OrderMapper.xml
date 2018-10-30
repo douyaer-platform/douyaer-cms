@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.douyaer.cms.dao.OrderMapper" >
+  <resultMap id="BaseResultMap" type="com.douyaer.cms.pojo.Order" >
+    <constructor >
+      <idArg column="order_id" jdbcType="INTEGER" javaType="java.lang.Long" />
+      <arg column="task_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="user_id" jdbcType="INTEGER" javaType="java.lang.Long" />
+      <arg column="ip_screenshot_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="search_pic_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="compare_pic_url1" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="compare_pic_url2" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="compare_pic_url3" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="enter_store_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="view_remark_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="view_buyershow_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="detail_page_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="detail_page_bottom_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="home_page_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="view_all_goods_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="view_other_goods_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="chat_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="buy_goods_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="finish_order_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="favorite_attention_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="favorite_attention_entershop_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="groupon_detail_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="finish_remark_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="brushhand_remark_des" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="business_remark_des" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="buyershow_url1" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="buyershow_url2" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="buyershow_url3" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="back_buy_img1" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="back_buy_img2" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="back_buy_img3" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="back_buy_img4" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="back_buy_img5" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="submit_order_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="business_remark_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="brushhand_remark_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="send_money_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="auto_sendmoney_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <resultMap id="OrderEntity" type="com.douyaer.cms.entity.OrderEntity" >
+    <constructor >
+      <idArg column="order_id" jdbcType="INTEGER" javaType="java.lang.Long" />
+      <arg column="task_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="user_id" jdbcType="INTEGER" javaType="java.lang.Long" />
+      <arg column="ip_screenshot_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="search_pic_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="compare_pic_url1" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="compare_pic_url2" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="compare_pic_url3" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="enter_store_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="view_remark_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="view_buyershow_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="detail_page_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="detail_page_bottom_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="home_page_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="view_all_goods_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="view_other_goods_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="chat_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="buy_goods_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="finish_order_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="favorite_attention_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="favorite_attention_entershop_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="groupon_detail_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="finish_remark_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="brushhand_remark_des" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="business_remark_des" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="buyershow_url1" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="buyershow_url2" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="buyershow_url3" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="back_buy_img1" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="back_buy_img2" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="back_buy_img3" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="back_buy_img4" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="back_buy_img5" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="submit_order_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="business_remark_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="brushhand_remark_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="send_money_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="auto_sendmoney_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="store_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="goods_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="goods_pic_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="task_search_pic_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="condition_pic_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="order_price" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="goods_price" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="commission" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="tags" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="buy_back_type" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="need_alitm" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="phone" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="taobao_account" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="bus_user_id" jdbcType="INTEGER" javaType="java.lang.Long" />
+      <arg column="bus_phone" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="bus_taobao_account" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    order_id, task_id, user_id, ip_screenshot_url, search_pic_url, compare_pic_url1, 
+    compare_pic_url2, compare_pic_url3, enter_store_url, view_remark_url, view_buyershow_url, 
+    detail_page_url, detail_page_bottom_url, home_page_url, view_all_goods_url, view_other_goods_url, 
+    chat_url, buy_goods_url, finish_order_url, favorite_attention_url, favorite_attention_entershop_url, 
+    groupon_detail_url, finish_remark_url, brushhand_remark_des, business_remark_des, 
+    buyershow_url1, buyershow_url2, buyershow_url3, back_buy_img1, back_buy_img2, back_buy_img3, 
+    back_buy_img4, back_buy_img5, create_time, update_time, submit_order_time, business_remark_time, 
+    brushhand_remark_time, send_money_time, auto_sendmoney_time, status
+  </sql>
+  <insert id="insertSelective" parameterType="com.douyaer.cms.pojo.Order" >
+    insert into t_user_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="taskId != null" >
+        task_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="ipScreenshotUrl != null" >
+        ip_screenshot_url,
+      </if>
+      <if test="searchPicUrl != null" >
+        search_pic_url,
+      </if>
+      <if test="comparePicUrl1 != null" >
+        compare_pic_url1,
+      </if>
+      <if test="comparePicUrl2 != null" >
+        compare_pic_url2,
+      </if>
+      <if test="comparePicUrl3 != null" >
+        compare_pic_url3,
+      </if>
+      <if test="enterStoreUrl != null" >
+        enter_store_url,
+      </if>
+      <if test="viewRemarkUrl != null" >
+        view_remark_url,
+      </if>
+      <if test="viewBuyershowUrl != null" >
+        view_buyershow_url,
+      </if>
+      <if test="detailPageUrl != null" >
+        detail_page_url,
+      </if>
+      <if test="detailPageBottomUrl != null" >
+        detail_page_bottom_url,
+      </if>
+      <if test="homePageUrl != null" >
+        home_page_url,
+      </if>
+      <if test="viewAllGoodsUrl != null" >
+        view_all_goods_url,
+      </if>
+      <if test="viewOtherGoodsUrl != null" >
+        view_other_goods_url,
+      </if>
+      <if test="chatUrl != null" >
+        chat_url,
+      </if>
+      <if test="buyGoodsUrl != null" >
+        buy_goods_url,
+      </if>
+      <if test="finishOrderUrl != null" >
+        finish_order_url,
+      </if>
+      <if test="favoriteAttentionUrl != null" >
+        favorite_attention_url,
+      </if>
+      <if test="favoriteAttentionEntershopUrl != null" >
+        favorite_attention_entershop_url,
+      </if>
+      <if test="grouponDetailUrl != null" >
+        groupon_detail_url,
+      </if>
+      <if test="finishRemarkUrl != null" >
+        finish_remark_url,
+      </if>
+      <if test="brushhandRemarkDes != null" >
+        brushhand_remark_des,
+      </if>
+      <if test="businessRemarkDes != null" >
+        business_remark_des,
+      </if>
+      <if test="buyershowUrl1 != null" >
+        buyershow_url1,
+      </if>
+      <if test="buyershowUrl2 != null" >
+        buyershow_url2,
+      </if>
+      <if test="buyershowUrl3 != null" >
+        buyershow_url3,
+      </if>
+      <if test="backBuyImg1 != null" >
+        back_buy_img1,
+      </if>
+      <if test="backBuyImg2 != null" >
+        back_buy_img2,
+      </if>
+      <if test="backBuyImg3 != null" >
+        back_buy_img3,
+      </if>
+      <if test="backBuyImg4 != null" >
+        back_buy_img4,
+      </if>
+      <if test="backBuyImg5 != null" >
+        back_buy_img5,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="submitOrderTime != null" >
+        submit_order_time,
+      </if>
+      <if test="businessRemarkTime != null" >
+        business_remark_time,
+      </if>
+      <if test="brushhandRemarkTime != null" >
+        brushhand_remark_time,
+      </if>
+      <if test="sendMoneyTime != null" >
+        send_money_time,
+      </if>
+      <if test="autoSendmoneyTime != null" >
+        auto_sendmoney_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderId != null" >
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="taskId != null" >
+        #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="ipScreenshotUrl != null" >
+        #{ipScreenshotUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="searchPicUrl != null" >
+        #{searchPicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="comparePicUrl1 != null" >
+        #{comparePicUrl1,jdbcType=VARCHAR},
+      </if>
+      <if test="comparePicUrl2 != null" >
+        #{comparePicUrl2,jdbcType=VARCHAR},
+      </if>
+      <if test="comparePicUrl3 != null" >
+        #{comparePicUrl3,jdbcType=VARCHAR},
+      </if>
+      <if test="enterStoreUrl != null" >
+        #{enterStoreUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="viewRemarkUrl != null" >
+        #{viewRemarkUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="viewBuyershowUrl != null" >
+        #{viewBuyershowUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="detailPageUrl != null" >
+        #{detailPageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="detailPageBottomUrl != null" >
+        #{detailPageBottomUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="homePageUrl != null" >
+        #{homePageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="viewAllGoodsUrl != null" >
+        #{viewAllGoodsUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="viewOtherGoodsUrl != null" >
+        #{viewOtherGoodsUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="chatUrl != null" >
+        #{chatUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="buyGoodsUrl != null" >
+        #{buyGoodsUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="finishOrderUrl != null" >
+        #{finishOrderUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="favoriteAttentionUrl != null" >
+        #{favoriteAttentionUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="favoriteAttentionEntershopUrl != null" >
+        #{favoriteAttentionEntershopUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="grouponDetailUrl != null" >
+        #{grouponDetailUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="finishRemarkUrl != null" >
+        #{finishRemarkUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="brushhandRemarkDes != null" >
+        #{brushhandRemarkDes,jdbcType=VARCHAR},
+      </if>
+      <if test="businessRemarkDes != null" >
+        #{businessRemarkDes,jdbcType=VARCHAR},
+      </if>
+      <if test="buyershowUrl1 != null" >
+        #{buyershowUrl1,jdbcType=VARCHAR},
+      </if>
+      <if test="buyershowUrl2 != null" >
+        #{buyershowUrl2,jdbcType=VARCHAR},
+      </if>
+      <if test="buyershowUrl3 != null" >
+        #{buyershowUrl3,jdbcType=VARCHAR},
+      </if>
+      <if test="backBuyImg1 != null" >
+        #{backBuyImg1,jdbcType=VARCHAR},
+      </if>
+      <if test="backBuyImg2 != null" >
+        #{backBuyImg2,jdbcType=VARCHAR},
+      </if>
+      <if test="backBuyImg3 != null" >
+        #{backBuyImg3,jdbcType=VARCHAR},
+      </if>
+      <if test="backBuyImg4 != null" >
+        #{backBuyImg4,jdbcType=VARCHAR},
+      </if>
+      <if test="backBuyImg5 != null" >
+        #{backBuyImg5,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="submitOrderTime != null" >
+        #{submitOrderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="businessRemarkTime != null" >
+        #{businessRemarkTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="brushhandRemarkTime != null" >
+        #{brushhandRemarkTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sendMoneyTime != null" >
+        #{sendMoneyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="autoSendmoneyTime != null" >
+        #{autoSendmoneyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.douyaer.cms.pojo.Order" >
+    update t_user_order
+    <set >
+      <if test="taskId != null" >
+        task_id = #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="ipScreenshotUrl != null" >
+        ip_screenshot_url = #{ipScreenshotUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="searchPicUrl != null" >
+        search_pic_url = #{searchPicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="comparePicUrl1 != null" >
+        compare_pic_url1 = #{comparePicUrl1,jdbcType=VARCHAR},
+      </if>
+      <if test="comparePicUrl2 != null" >
+        compare_pic_url2 = #{comparePicUrl2,jdbcType=VARCHAR},
+      </if>
+      <if test="comparePicUrl3 != null" >
+        compare_pic_url3 = #{comparePicUrl3,jdbcType=VARCHAR},
+      </if>
+      <if test="enterStoreUrl != null" >
+        enter_store_url = #{enterStoreUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="viewRemarkUrl != null" >
+        view_remark_url = #{viewRemarkUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="viewBuyershowUrl != null" >
+        view_buyershow_url = #{viewBuyershowUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="detailPageUrl != null" >
+        detail_page_url = #{detailPageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="detailPageBottomUrl != null" >
+        detail_page_bottom_url = #{detailPageBottomUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="homePageUrl != null" >
+        home_page_url = #{homePageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="viewAllGoodsUrl != null" >
+        view_all_goods_url = #{viewAllGoodsUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="viewOtherGoodsUrl != null" >
+        view_other_goods_url = #{viewOtherGoodsUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="chatUrl != null" >
+        chat_url = #{chatUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="buyGoodsUrl != null" >
+        buy_goods_url = #{buyGoodsUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="finishOrderUrl != null" >
+        finish_order_url = #{finishOrderUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="favoriteAttentionUrl != null" >
+        favorite_attention_url = #{favoriteAttentionUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="favoriteAttentionEntershopUrl != null" >
+        favorite_attention_entershop_url = #{favoriteAttentionEntershopUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="grouponDetailUrl != null" >
+        groupon_detail_url = #{grouponDetailUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="finishRemarkUrl != null" >
+        finish_remark_url = #{finishRemarkUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="brushhandRemarkDes != null" >
+        brushhand_remark_des = #{brushhandRemarkDes,jdbcType=VARCHAR},
+      </if>
+      <if test="businessRemarkDes != null" >
+        business_remark_des = #{businessRemarkDes,jdbcType=VARCHAR},
+      </if>
+      <if test="buyershowUrl1 != null" >
+        buyershow_url1 = #{buyershowUrl1,jdbcType=VARCHAR},
+      </if>
+      <if test="buyershowUrl2 != null" >
+        buyershow_url2 = #{buyershowUrl2,jdbcType=VARCHAR},
+      </if>
+      <if test="buyershowUrl3 != null" >
+        buyershow_url3 = #{buyershowUrl3,jdbcType=VARCHAR},
+      </if>
+      <if test="backBuyImg1 != null" >
+        back_buy_img1 = #{backBuyImg1,jdbcType=VARCHAR},
+      </if>
+      <if test="backBuyImg2 != null" >
+        back_buy_img2 = #{backBuyImg2,jdbcType=VARCHAR},
+      </if>
+      <if test="backBuyImg3 != null" >
+        back_buy_img3 = #{backBuyImg3,jdbcType=VARCHAR},
+      </if>
+      <if test="backBuyImg4 != null" >
+        back_buy_img4 = #{backBuyImg4,jdbcType=VARCHAR},
+      </if>
+      <if test="backBuyImg5 != null" >
+        back_buy_img5 = #{backBuyImg5,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="submitOrderTime != null" >
+        submit_order_time = #{submitOrderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="businessRemarkTime != null" >
+        business_remark_time = #{businessRemarkTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="brushhandRemarkTime != null" >
+        brushhand_remark_time = #{brushhandRemarkTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sendMoneyTime != null" >
+        send_money_time = #{sendMoneyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="autoSendmoneyTime != null" >
+        auto_sendmoney_time = #{autoSendmoneyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </update>
+</mapper>

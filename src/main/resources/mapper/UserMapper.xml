@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.douyaer.cms.dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.douyaer.cms.pojo.User" >
+    <constructor >
+      <idArg column="user_id" jdbcType="INTEGER" javaType="java.lang.Long" />
+      <arg column="user_role" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="phone" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="password" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="real_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="avatar" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="sex" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="identify_no" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="coin" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="freeze_coin" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="integral" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="taobao_account" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ip" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="address" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="alitm" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="store_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="inviter_user_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="identify_no_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <resultMap id="BrushhandEntity" type="com.douyaer.cms.entity.BrushhandEntity" >
+    <constructor >
+      <idArg column="user_id" jdbcType="INTEGER" javaType="java.lang.Long" />
+      <arg column="user_role" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="phone" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="password" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="real_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="avatar" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="sex" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="identify_no" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="coin" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="freeze_coin" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="integral" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="taobao_account" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ip" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="address" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="alitm" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="store_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="inviter_user_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="identify_no_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="invite_real_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    user_id, user_role, phone, password, real_name, avatar, sex, identify_no, coin, freeze_coin, 
+    integral, taobao_account, ip, address, alitm, store_url, inviter_user_id, create_time, 
+    update_time, status, identify_no_url
+  </sql>
+  <insert id="insertSelective" parameterType="com.douyaer.cms.pojo.User" >
+    insert into t_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="userRole != null" >
+        user_role,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="realName != null" >
+        real_name,
+      </if>
+      <if test="avatar != null" >
+        avatar,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="identifyNo != null" >
+        identify_no,
+      </if>
+      <if test="coin != null" >
+        coin,
+      </if>
+      <if test="freezeCoin != null" >
+        freeze_coin,
+      </if>
+      <if test="integral != null" >
+        integral,
+      </if>
+      <if test="taobaoAccount != null" >
+        taobao_account,
+      </if>
+      <if test="ip != null" >
+        ip,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="alitm != null" >
+        alitm,
+      </if>
+      <if test="storeUrl != null" >
+        store_url,
+      </if>
+      <if test="inviterUserId != null" >
+        inviter_user_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="identifyNoUrl != null" >
+        identify_no_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userRole != null" >
+        #{userRole,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null" >
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null" >
+        #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="identifyNo != null" >
+        #{identifyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="coin != null" >
+        #{coin,jdbcType=DECIMAL},
+      </if>
+      <if test="freezeCoin != null" >
+        #{freezeCoin,jdbcType=DECIMAL},
+      </if>
+      <if test="integral != null" >
+        #{integral,jdbcType=INTEGER},
+      </if>
+      <if test="taobaoAccount != null" >
+        #{taobaoAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null" >
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="alitm != null" >
+        #{alitm,jdbcType=VARCHAR},
+      </if>
+      <if test="storeUrl != null" >
+        #{storeUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="inviterUserId != null" >
+        #{inviterUserId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="identifyNoUrl != null" >
+        #{identifyNoUrl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.douyaer.cms.pojo.User" >
+    update t_user
+    <set >
+      <if test="userRole != null" >
+        user_role = #{userRole,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null" >
+        real_name = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null" >
+        avatar = #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="identifyNo != null" >
+        identify_no = #{identifyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="coin != null" >
+        coin = #{coin,jdbcType=DECIMAL},
+      </if>
+      <if test="freezeCoin != null" >
+        freeze_coin = #{freezeCoin,jdbcType=DECIMAL},
+      </if>
+      <if test="integral != null" >
+        integral = #{integral,jdbcType=INTEGER},
+      </if>
+      <if test="taobaoAccount != null" >
+        taobao_account = #{taobaoAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null" >
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="alitm != null" >
+        alitm = #{alitm,jdbcType=VARCHAR},
+      </if>
+      <if test="storeUrl != null" >
+        store_url = #{storeUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="inviterUserId != null" >
+        inviter_user_id = #{inviterUserId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="identifyNoUrl != null" >
+        identify_no_url = #{identifyNoUrl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+</mapper>

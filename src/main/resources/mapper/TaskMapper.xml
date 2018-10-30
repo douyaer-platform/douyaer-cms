@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.douyaer.cms.dao.TaskMapper" >
+  <resultMap id="BaseResultMap" type="com.douyaer.cms.pojo.Task" >
+    <constructor >
+      <idArg column="task_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="user_id" jdbcType="INTEGER" javaType="java.lang.Long" />
+      <arg column="brushhand_sex" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="provinces" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="start_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="end_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="order_count" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="cost_total_coin" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="order_price" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="commission" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="finish_scalping_count" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="remark" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="store_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="goods_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="goods_pic_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="search_pic_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="condition_pic_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="goods_price" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="tags" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="buy_back_type" jdbcType="SMALLINT" javaType="java.lang.Short" />
+      <arg column="need_alitm" jdbcType="SMALLINT" javaType="java.lang.Short" />
+      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="refund_coin" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="refund_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <resultMap id="TaskEntity" type="com.douyaer.cms.entity.TaskEntity" >
+    <constructor >
+      <idArg column="task_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="user_id" jdbcType="INTEGER" javaType="java.lang.Long" />
+      <arg column="brushhand_sex" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="provinces" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="start_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="end_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="order_count" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="cost_total_coin" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="order_price" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="commission" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="finish_scalping_count" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="remark" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="store_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="goods_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="goods_pic_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="search_pic_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="condition_pic_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="goods_price" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="tags" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="buy_back_type" jdbcType="SMALLINT" javaType="java.lang.Short" />
+      <arg column="need_alitm" jdbcType="SMALLINT" javaType="java.lang.Short" />
+      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="refund_coin" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="refund_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="phone" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="taobao_account" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    task_id, user_id, brushhand_sex, provinces, start_time, end_time, order_count, cost_total_coin, 
+    order_price, commission, finish_scalping_count, remark, store_name, goods_url, goods_pic_url, 
+    search_pic_url, condition_pic_url, goods_price, tags, buy_back_type, need_alitm, 
+    create_time, status, refund_coin, refund_time
+  </sql>
+  <insert id="insertSelective" parameterType="com.douyaer.cms.pojo.Task" >
+    insert into t_user_task
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="taskId != null" >
+        task_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="brushhandSex != null" >
+        brushhand_sex,
+      </if>
+      <if test="provinces != null" >
+        provinces,
+      </if>
+      <if test="startTime != null" >
+        start_time,
+      </if>
+      <if test="endTime != null" >
+        end_time,
+      </if>
+      <if test="orderCount != null" >
+        order_count,
+      </if>
+      <if test="costTotalCoin != null" >
+        cost_total_coin,
+      </if>
+      <if test="orderPrice != null" >
+        order_price,
+      </if>
+      <if test="commission != null" >
+        commission,
+      </if>
+      <if test="finishScalpingCount != null" >
+        finish_scalping_count,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="storeName != null" >
+        store_name,
+      </if>
+      <if test="goodsUrl != null" >
+        goods_url,
+      </if>
+      <if test="goodsPicUrl != null" >
+        goods_pic_url,
+      </if>
+      <if test="searchPicUrl != null" >
+        search_pic_url,
+      </if>
+      <if test="conditionPicUrl != null" >
+        condition_pic_url,
+      </if>
+      <if test="goodsPrice != null" >
+        goods_price,
+      </if>
+      <if test="tags != null" >
+        tags,
+      </if>
+      <if test="buyBackType != null" >
+        buy_back_type,
+      </if>
+      <if test="needAlitm != null" >
+        need_alitm,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="refundCoin != null" >
+        refund_coin,
+      </if>
+      <if test="refundTime != null" >
+        refund_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="taskId != null" >
+        #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="brushhandSex != null" >
+        #{brushhandSex,jdbcType=VARCHAR},
+      </if>
+      <if test="provinces != null" >
+        #{provinces,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderCount != null" >
+        #{orderCount,jdbcType=INTEGER},
+      </if>
+      <if test="costTotalCoin != null" >
+        #{costTotalCoin,jdbcType=DECIMAL},
+      </if>
+      <if test="orderPrice != null" >
+        #{orderPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="commission != null" >
+        #{commission,jdbcType=INTEGER},
+      </if>
+      <if test="finishScalpingCount != null" >
+        #{finishScalpingCount,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="storeName != null" >
+        #{storeName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsUrl != null" >
+        #{goodsUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsPicUrl != null" >
+        #{goodsPicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="searchPicUrl != null" >
+        #{searchPicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="conditionPicUrl != null" >
+        #{conditionPicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsPrice != null" >
+        #{goodsPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="tags != null" >
+        #{tags,jdbcType=VARCHAR},
+      </if>
+      <if test="buyBackType != null" >
+        #{buyBackType,jdbcType=SMALLINT},
+      </if>
+      <if test="needAlitm != null" >
+        #{needAlitm,jdbcType=SMALLINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="refundCoin != null" >
+        #{refundCoin,jdbcType=DECIMAL},
+      </if>
+      <if test="refundTime != null" >
+        #{refundTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.douyaer.cms.pojo.Task" >
+    update t_user_task
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="brushhandSex != null" >
+        brushhand_sex = #{brushhandSex,jdbcType=VARCHAR},
+      </if>
+      <if test="provinces != null" >
+        provinces = #{provinces,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderCount != null" >
+        order_count = #{orderCount,jdbcType=INTEGER},
+      </if>
+      <if test="costTotalCoin != null" >
+        cost_total_coin = #{costTotalCoin,jdbcType=DECIMAL},
+      </if>
+      <if test="orderPrice != null" >
+        order_price = #{orderPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="commission != null" >
+        commission = #{commission,jdbcType=INTEGER},
+      </if>
+      <if test="finishScalpingCount != null" >
+        finish_scalping_count = #{finishScalpingCount,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="storeName != null" >
+        store_name = #{storeName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsUrl != null" >
+        goods_url = #{goodsUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsPicUrl != null" >
+        goods_pic_url = #{goodsPicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="searchPicUrl != null" >
+        search_pic_url = #{searchPicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="conditionPicUrl != null" >
+        condition_pic_url = #{conditionPicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsPrice != null" >
+        goods_price = #{goodsPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="tags != null" >
+        tags = #{tags,jdbcType=VARCHAR},
+      </if>
+      <if test="buyBackType != null" >
+        buy_back_type = #{buyBackType,jdbcType=SMALLINT},
+      </if>
+      <if test="needAlitm != null" >
+        need_alitm = #{needAlitm,jdbcType=SMALLINT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="refundCoin != null" >
+        refund_coin = #{refundCoin,jdbcType=DECIMAL},
+      </if>
+      <if test="refundTime != null" >
+        refund_time = #{refundTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where task_id = #{taskId,jdbcType=VARCHAR}
+  </update>
+</mapper>

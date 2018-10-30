@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+
+<body>
+  <header th:fragment="header">
+
+    <div class="layui-header">
+      <a href="/index">
+        <div class="layui-logo">管理平台</div>
+      </a>
+      <ul class="layui-nav layui-layout-right">
+        <li class="layui-nav-item">
+          <a href="javascript:;">
+            <!-- ${session} -->
+            <div th:text="${session.admin.name}"></div>
+          </a>
+          <dl class="layui-nav-child">
+            <dd id="updatePassword" class="layui-this">
+              <a href="/admin/updatePassword">修改密码</a>
+            </dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="/logout">退出</a>
+        </li>
+      </ul>
+    </div>
+
+  </header>
+</body>
+
+</html>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.douyaer.cms.dao.InviteMapper" >
+  <resultMap id="BaseResultMap" type="com.douyaer.cms.pojo.Invite" >
+    <constructor >
+      <idArg column="invite_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="user_id" jdbcType="INTEGER" javaType="java.lang.Long" />
+      <arg column="desc_user_id" jdbcType="INTEGER" javaType="java.lang.Long" />
+      <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ctime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="receive_ctime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="integral" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <resultMap id="InviteEntity" type="com.douyaer.cms.entity.InviteEntity" >
+    <constructor >
+      <idArg column="invite_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="user_id" jdbcType="INTEGER" javaType="java.lang.Long" />
+      <arg column="desc_user_id" jdbcType="INTEGER" javaType="java.lang.Long" />
+      <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ctime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="receive_ctime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="integral" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="real_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="phone" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="desc_real_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="desc_phone" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="desc_taobao_account" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="order_count" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    invite_id, user_id, desc_user_id, status, ctime, receive_ctime, integral
+  </sql>
+  <insert id="insertSelective" parameterType="com.douyaer.cms.pojo.Invite" >
+    insert into t_user_invite
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="inviteId != null" >
+        invite_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="descUserId != null" >
+        desc_user_id,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="ctime != null" >
+        ctime,
+      </if>
+      <if test="receiveCtime != null" >
+        receive_ctime,
+      </if>
+      <if test="integral != null" >
+        integral,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="inviteId != null" >
+        #{inviteId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="descUserId != null" >
+        #{descUserId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="ctime != null" >
+        #{ctime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receiveCtime != null" >
+        #{receiveCtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="integral != null" >
+        #{integral,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.douyaer.cms.pojo.Invite" >
+    update t_user_invite
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="descUserId != null" >
+        desc_user_id = #{descUserId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="ctime != null" >
+        ctime = #{ctime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receiveCtime != null" >
+        receive_ctime = #{receiveCtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="integral != null" >
+        integral = #{integral,jdbcType=INTEGER},
+      </if>
+    </set>
+    where invite_id = #{inviteId,jdbcType=VARCHAR}
+  </update>
+</mapper>

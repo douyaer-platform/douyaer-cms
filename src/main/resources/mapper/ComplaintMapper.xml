@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.douyaer.cms.dao.ComplaintMapper" >
+  <resultMap id="BaseResultMap" type="com.douyaer.cms.pojo.Complaint" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Long" />
+      <arg column="order_id" jdbcType="INTEGER" javaType="java.lang.Long" />
+      <arg column="complaint_user_id" jdbcType="INTEGER" javaType="java.lang.Long" />
+      <arg column="remark" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ctime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ComplaintEntity" type="com.douyaer.cms.entity.ComplaintEntity" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Long" />
+      <arg column="order_id" jdbcType="INTEGER" javaType="java.lang.Long" />
+      <arg column="complaint_user_id" jdbcType="INTEGER" javaType="java.lang.Long" />
+      <arg column="remark" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ctime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="phone" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, order_id, complaint_user_id, remark, status, ctime
+  </sql>
+  <insert id="insertSelective" parameterType="com.douyaer.cms.pojo.Complaint" >
+    insert into t_user_order_complaint
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="complaintUserId != null" >
+        complaint_user_id,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="ctime != null" >
+        ctime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="complaintUserId != null" >
+        #{complaintUserId,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="ctime != null" >
+        #{ctime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.douyaer.cms.pojo.Complaint" >
+    update t_user_order_complaint
+    <set >
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="complaintUserId != null" >
+        complaint_user_id = #{complaintUserId,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="ctime != null" >
+        ctime = #{ctime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

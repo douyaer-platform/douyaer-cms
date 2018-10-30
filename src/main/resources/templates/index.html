@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="config::index" th:with="title='后台管理'">
+</head>
+
+<body class="layui-layout-body">
+  <div class="layui-layout layui-layout-admin">
+    <!-- 头部 -->
+    <div th:replace="fragment/header::header"></div>
+    <!-- 菜单 -->
+    <div th:replace="fragment/menu::menu"></div>
+
+    <div class="layui-body" style="margin: 1%">
+      <fieldset class="layui-elem-field site-demo-button" style="margin-top: 30px;">
+        <legend>首页</legend>
+        <div style="margin: 5%; font-size: 28px;">欢迎来到豆芽儿后台管理系统</div>
+      </fieldset>
+    </div>
+    <!--底部-->
+    <div th:replace="fragment/footer::footer"></div>
+  </div>
+</body>
+
+</html>

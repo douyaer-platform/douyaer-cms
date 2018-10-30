@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="config::index" th:with="title='后台管理'">
+</head>
+
+<body class="layui-layout-body">
+  <div class="layui-layout layui-layout-admin">
+    <!-- 头部 -->
+    <div th:replace="fragment/header::header"></div>
+    <!-- 菜单 -->
+    <div th:replace="fragment/menu::menu"></div>
+
+    <div class="layui-body" style="margin: 1%">
+      <form class="layui-form" action="">
+        <div class="layui-form-item">
+          <label class="layui-form-label">手机</label>
+          <div class="layui-input-block">
+            <input id="phone" type="text" name="phone" required lay-verify="required|number" placeholder="请输入商家/刷手手机" autocomplete="off" class="layui-input">
+          </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">充值金额</label>
+            <div class="layui-input-block">
+              <input id="totalFee" type="text" name="totalFee" required lay-verify="required|number" placeholder="请输入充值金额" autocomplete="off" class="layui-input">
+            </div>
+          </div>
+        <div class="layui-form-item">
+          <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="add">充值</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <!--底部-->
+    <div th:replace="fragment/footer::footer"></div>
+  </div>
+  <script src="/js/deposit/add.js"></script>
+</body>
+
+</html>
